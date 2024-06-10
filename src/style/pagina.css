@@ -1,3 +1,5 @@
+
+/* header */
 .contenitore{
     width: 100%;
     height: 100%;
@@ -13,6 +15,7 @@
     font-weight: 600;
     margin-bottom: 20px;
     margin-top: 20px;
+    text-align: center;
 }
 
 .contenitore p {
@@ -26,8 +29,7 @@
     margin-bottom: 20px;
 }
 
-
-
+/* main */
 .contenitore-globale{
     width: 100%;
     height: 50vh;
@@ -62,7 +64,63 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    cursor: pointer;
 }
 
 
+
+
+/*leaderboard
+  */ 
+
+  .leaderboard-container{
+    margin-top: 10px !important;
+    width: 30%;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(161, 63, 63);
+    padding: 1em;        
+    border: solid 2px rgb(44, 43, 43);
+    word-spacing: normal;                                                                                                                             ;
+  }
+
+  .leaderboard-container h2{
+    font-size: 28px;
+    margin-bottom: 1vh;
+  }
+
+ .leaderboard-container button{
+    margin-top: 1vh;
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(200, 96, 96);
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+
+ }
+
+
+/* telefono */
+
+ @media screen and (max-width: 430px) {
+    
+    
+
+
+
+
+
+
+
+
+
+
+ }
