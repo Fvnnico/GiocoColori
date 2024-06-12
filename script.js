@@ -1,4 +1,4 @@
-let colorePrincipale; // Variabile per memorizzare il colore principale
+let colorePrincipale; // letiabile per memorizzare il colore principale
 
 /* vittorie reset a 0 */
 if (localStorage.getItem("vittorie") === null) {
@@ -10,6 +10,10 @@ if (localStorage.getItem("sconfitte") === null) {
     localStorage.setItem("sconfitte", 0);
 }
 
+ultimaVittorie = 0;
+
+
+
 // per prendere un colore a caso
 function randomizzatoRGB() {
     const r = Math.floor(Math.random() * 256);
@@ -18,12 +22,17 @@ function randomizzatoRGB() {
     return `rgb(${r}, ${g}, ${b})`;
 }
 
+
+
 function mostraColoreCasuale() {
     const element = document.getElementById("randomColorText");
     colorePrincipale = randomizzatoRGB(); // Memorizza il colore generato
-    element.textContent = `Colore RGB randomizzato: ${colorePrincipale}`;
+    element.innerHTML = `Colore RGB randomizzato: ${colorePrincipale}`;
+    /* element.style.backgroundColor = colorePrincipale; */
 }
 mostraColoreCasuale();
+
+
 
 // Funzione per applicare colori randomizzati
 function applicaColoreRandomizzato() {
@@ -43,18 +52,18 @@ function applicaColoreRandomizzato() {
 }
 applicaColoreRandomizzato();
 
+
+
 function controllaColore(event) {
     const elementoScelto = event.target;
     if (elementoScelto.style.backgroundColor === colorePrincipale) {
-        alert("Hai vinto!");
         let vittorie = parseInt(localStorage.getItem("vittorie"));
         vittorie += 1;
         localStorage.setItem("vittorie", vittorie.toString());
         scoreAggiornato();
         mostraColoreCasuale();
-        applicaColoreRandomizzato();
+        applicaColoreRandomizzato();     
     } else {
-        alert("Hai perso!");
         let sconfitte = parseInt(localStorage.getItem("sconfitte"));
         sconfitte += 1;
         localStorage.setItem("sconfitte", sconfitte.toString());
@@ -77,10 +86,13 @@ function scoreAggiornato() {
     const sconfitte = localStorage.getItem("sconfitte");
     document.getElementById(
         "vittorie"
-    ).innerText = `Numero di vittorie: ${vittorie}`;
+    ).innerText = `Vittorie: ${vittorie}`;
     document.getElementById(
         "sconfitte"
-    ).innerText = `Numero di sconfitte: ${sconfitte}`;
+    ).innerText = `Sconfitte: ${sconfitte}`;
+    document.getElementById(
+        "ultimaVittorie"
+    ).innerText = `Ultime vittorie streak : ${ultimaVittorie}`;
 }
 scoreAggiornato();
 
@@ -89,7 +101,7 @@ scoreAggiornato();
 function resettaPunteggio() {
     const vittorie = localStorage.getItem("vittorie");
     const sconfitte = localStorage.getItem("sconfitte");
-
+    ultimaVittorie = localStorage.getItem("vittorie");
     if (vittorie || sconfitte >= 1) {
         localStorage.setItem("vittorie", 0);
         localStorage.setItem("sconfitte", 0);
